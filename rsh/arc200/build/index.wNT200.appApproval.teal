@@ -1,0 +1,2173 @@
+#pragma version 8
+// resource: R_Txn
+txn ApplicationID
+bz alloc
+byte base64()
+app_global_get
+dup
+int 0
+extract_uint64
+store 1 // GV_currentStep :: UInt
+int 8
+extract_uint64
+store 2 // GV_currentTime :: UInt
+byte base64(AA==)
+app_global_get
+byte base64(AQ==)
+app_global_get
+concat
+byte base64(Ag==)
+app_global_get
+concat
+byte base64(Aw==)
+app_global_get
+concat
+byte base64(BA==)
+app_global_get
+concat
+preamble:
+pushbytess base64(AiMmfA==) base64(CWUBbg==) base64(HFN4rQ==) base64(PCpXoQ==) base64(ZDbc4A==) base64(ZX0T7A==) base64(ZdjoCQ==) base64(Z0NAMQ==) base64(aM+Yzg==) base64(efWwjQ==) base64(gt0cug==) base64(guVzxA==) base64(j5UbWQ==) base64(nIahhQ==) base64(nNaFWA==) base64(o1nkdQ==) base64(tq4aJQ==) base64(u7MZ8w==) base64(yzpMkQ==) base64(0KHMFQ==) base64(12EBUg==) base64(3ZTKyg==) base64(6KxXuA==) base64(7JlgQQ==) base64(82tNvw==) base64(+261cw==)
+txna ApplicationArgs 0
+match deposit_uint64_ukUHBBSU8NflmqV48ePRDeliVnRzfYeahGSa54Q8eDFY_ state___byte_32_Muzk1TLE9nyOSr1yrBVKSkuc2G2RmncSpUE4x3Ye0gQ_ arc200_approve_aB7vxbW4PSDQsylrpf8z0pJ5DG0KY_ArfOZuMRX9a63o_ _reachp_2 arc200_decimals_0i3zaAdWGk8HTrh900e3z__BopVJHiDErU4VQKq4WR4_ arc200_name__bytiUdKDeBB_7Wod3lAotr0fjTghvzrL3y_c3feTU4zUwo_ deregister__byteqHgy_gqmrtc17aeA2T0sHueTcvRaDPFOgRhkKXpl2f0_ manager__addresshNUic4X5WqHRxwpnTIS3TNgEBoLRnBvea_Gbmnd6daw_ withdraw_uint64_qHWHvMT6XCvk7umuZEnSud7ACHOqA1YvfnWbjlWyn_A_ grant_address_voB0P2GtSPgk8keWQFFrigNPpqwOzZufpkaNLj5BW3NLk_ circulatingSuppli6X5aS7VIKzCjZOyZz0DShGSYzZzFbCnKJc6ZUYOQv8_ arc200_balanceOfAuLlni3r2JwN05I0cJndHjbQh_B7u8HtXeT2u87KRQA_ deleteAllowanceBGMyt4mT0eUv_30cNP17_WO9zpbGtARPERiaZTj22D4M_ destroy__voidyQs01swZ_UAEgoudVZNc2fO1ReK4LXRCsQSyR_cTRkI_ deleteBalanceBox7ebt7a0gvt3x0skRUbx_aCIeRGvqsuk5MyUE3cQhKSI_ createBalanceBoxchSbxpUd21iIKxD2bWZUfsnE9y0OLFr_OoRnQeAq03c_ arc200_symbol__bRs3rJdpYyd5U9jg4y_u6hZgTc3UoO_SmNhgJJ2m0lrY_ arc200_allowanceAcq4c8hE24gt_EoooVBPqZqn0ii698pjkLnoeezacoY_ hasAllowance_add8MigYkFtGyiY_nwrKWhHmCnIsjROuTjO4Faff7edDW0_ arc200_transferF8dq513jzwlGNyuNOIzPPYDtVSgiLxnp3MTKwA15nTo4_ register_byte_32y_l2IrPitJEU_sYtP1nUUk2_TZrnFiIwokwTSvnKkmg_ _reachp_0 hasBalance_addreiUYh5_XlPYmV0QW7Va5b0smQFFe3ff7oqyFvTefxscI_ arc200_totalSupp2vgBT0Wqe9Jv1e5PQOIiaRDt7ILIY6S8h4wVn48Sh2s_ arc200_transfer_mW6YBiBj2tVEDo94HJlsKqWJTJtaEhfhx1b4rELoCvQ_ touch__uint64ytIshDgD9ndGTOfYtyr_WvjvIb_CCbYGUoyaPYwgrfI_
+errl:
+err
+_api_arc200_approve2:
+load 11 // data_id/3461
+extract 0 32
+store 13 // spender_/3511
+load 11 // data_id/3461
+extract 32 32
+store 12 // value_/3512
+txn Sender
+load 21 // zeroAddress/3046
+!=
+assert
+// ^ Claim: ARC200: Approve this to zero address
+// at reach standard library:57:5:application
+// at ./wNT200.rsh:231:16:application call to "check" (defined at: reach standard library:49:32:function exp)
+// at ./wNT200.rsh:240:20:application call to "chkApprove_" (defined at: ./wNT200.rsh:230:56:function exp)
+// at ./wNT200.rsh:242:15:application call to [unknown function] (defined at: ./wNT200.rsh:242:15:function exp)
+load 13 // spender_/3511
+load 21 // zeroAddress/3046
+!=
+assert
+// ^ Claim: ARC200: Approve to zero address
+// at reach standard library:57:5:application
+// at ./wNT200.rsh:232:16:application call to "check" (defined at: reach standard library:49:32:function exp)
+// at ./wNT200.rsh:240:20:application call to "chkApprove_" (defined at: ./wNT200.rsh:230:56:function exp)
+// at ./wNT200.rsh:242:15:application call to [unknown function] (defined at: ./wNT200.rsh:242:15:function exp)
+// resource: R_Box
+int 28100
+byte base64(AAAAAAAAAAE=)
+txn Sender
+load 13 // spender_/3511
+concat
+concat
+sha256
+load 12 // value_/3512
+callsub l6_LF_mapSet
+byte base64(GWn4ZQ==)
+txn Sender
+concat
+load 13 // spender_/3511
+concat
+load 12 // value_/3512
+concat
+log // up to 100 bytes
+// ^ log: "arc200_Approval" [owner/3457,spender_/3511,value_/3512] "arc200_Approval(address,address,uint256)"
+int 1
+store 11 // v3524
+byte base64(AAAAAAAADcQ=)
+load 11 // v3524
+itob
+substring 7 8
+concat
+log // up to 9 bytes
+load 11 // v3524
+itob
+substring 7 8
+store 4 // GV_apiRet :: Null
+global Round
+store 15 // thisConsensusTime/3067
+_reachl_1:
+load 16 // s/3066
+extract 0 1
+btoi
+bz l27_ifF
+updateStateHalt:
+txn OnCompletion
+int DeleteApplication
+==
+assert
+// checked on completion
+callsub l29_LF_updateMbr
+// resource: R_Account
+int 0
+global CurrentApplicationAddress
+global CreatorAddress
+callsub l30_LF_makeTxn_False_True_False_True
+updateState:
+load 3 // GV_wasntMeth :: Bool
+bnz done
+apiReturn_noCheck:
+byte base64(FR98dQ==)
+load 4 // GV_apiRet :: Null
+concat
+log // up to 311 bytes
+done:
+int 1
+return
+_api_arc200_transfer2:
+load 11 // data_id/3971
+extract 0 32
+store 13 // to_/4044
+load 11 // data_id/3971
+extract 32 32
+store 12 // value_/4045
+txn Sender
+load 13 // to_/4044
+!=
+assert
+// ^ Claim: ARC200: Transfer to self
+// at reach standard library:57:5:application
+// at ./wNT200.rsh:182:16:application call to "check" (defined at: reach standard library:49:32:function exp)
+// at ./wNT200.rsh:193:20:application call to "chkTransfer" (defined at: ./wNT200.rsh:181:50:function exp)
+// at ./wNT200.rsh:195:15:application call to [unknown function] (defined at: ./wNT200.rsh:195:15:function exp)
+global ZeroAddress
+// resource: R_Box
+byte base64()
+global ZeroAddress
+byte base64(AA==)
+txn Sender
+concat
+callsub l3_LF_mapRef
+callsub l4_LF_fromSome
+dup
+store 22 // v4051
+load 12 // value_/4045
+b>=
+assert
+// ^ Claim: ARC200: Transfer amount must not be greater than balance
+// at reach standard library:57:5:application
+// at ./wNT200.rsh:183:16:application call to "check" (defined at: reach standard library:49:32:function exp)
+// at ./wNT200.rsh:193:20:application call to "chkTransfer" (defined at: ./wNT200.rsh:181:50:function exp)
+// at ./wNT200.rsh:195:15:application call to [unknown function] (defined at: ./wNT200.rsh:195:15:function exp)
+int 1
+store 11 // v4056
+byte base64(AAAAAAAAD9g=)
+load 11 // v4056
+itob
+substring 7 8
+concat
+log // up to 9 bytes
+load 11 // v4056
+itob
+substring 7 8
+store 4 // GV_apiRet :: Null
+int 28500
+byte base64(AA==)
+txn Sender
+concat
+load 22 // v4051
+load 12 // value_/4045
+b-
+callsub l20_LF_checkUInt256ResultLen
+callsub l6_LF_mapSet
+// resource: R_Box
+int 28500
+byte base64(AA==)
+load 13 // to_/4044
+concat
+global ZeroAddress
+byte base64()
+global ZeroAddress
+byte base64(AA==)
+load 13 // to_/4044
+concat
+callsub l3_LF_mapRef
+callsub l4_LF_fromSome
+load 12 // value_/4045
+b+
+callsub l20_LF_checkUInt256ResultLen
+callsub l6_LF_mapSet
+byte base64(eYPDXA==)
+txn Sender
+concat
+load 13 // to_/4044
+concat
+load 12 // value_/4045
+concat
+log // up to 100 bytes
+// ^ log: "arc200_Transfer" [owner/3457,to_/4044,value_/4045] "arc200_Transfer(address,address,uint256)"
+global Round
+store 15 // thisConsensusTime/3067
+b _reachl_1
+_api_arc200_transferFrom2:
+load 11 // data_id/4481
+extract 0 32
+store 22 // from_/4585
+load 11 // data_id/4481
+extract 32 32
+store 13 // to_/4586
+load 11 // data_id/4481
+extract 64 32
+store 12 // value_/4587
+load 22 // from_/4585
+load 13 // to_/4586
+!=
+assert
+// ^ Claim: ARC200: Transfer to self
+// at reach standard library:57:5:application
+// at ./wNT200.rsh:204:16:application call to "check" (defined at: reach standard library:49:32:function exp)
+// at ./wNT200.rsh:220:24:application call to "chkTransferFrom" (defined at: ./wNT200.rsh:203:64:function exp)
+// at ./wNT200.rsh:222:15:application call to [unknown function] (defined at: ./wNT200.rsh:222:15:function exp)
+global ZeroAddress
+// resource: R_Box
+byte base64()
+global ZeroAddress
+byte base64(AA==)
+load 22 // from_/4585
+concat
+callsub l3_LF_mapRef
+callsub l4_LF_fromSome
+dup
+store 24 // v4593
+load 12 // value_/4587
+b>=
+assert
+// ^ Claim: ARC200: Amount must not be greater than balance
+// at reach standard library:57:5:application
+// at ./wNT200.rsh:205:16:application call to "check" (defined at: reach standard library:49:32:function exp)
+// at ./wNT200.rsh:220:24:application call to "chkTransferFrom" (defined at: ./wNT200.rsh:203:64:function exp)
+// at ./wNT200.rsh:222:15:application call to [unknown function] (defined at: ./wNT200.rsh:222:15:function exp)
+load 22 // from_/4585
+txn Sender
+concat
+store 23 // v4596
+global ZeroAddress
+// resource: R_Box
+byte base64()
+global ZeroAddress
+byte base64(AAAAAAAAAAE=)
+load 23 // v4596
+concat
+sha256
+callsub l3_LF_mapRef
+callsub l4_LF_fromSome
+dup
+store 11 // v4598
+load 12 // value_/4587
+b>=
+assert
+// ^ Claim: ARC200: Amount must not be greater than allowance
+// at reach standard library:57:5:application
+// at ./wNT200.rsh:209:16:application call to "check" (defined at: reach standard library:49:32:function exp)
+// at ./wNT200.rsh:220:24:application call to "chkTransferFrom" (defined at: ./wNT200.rsh:203:64:function exp)
+// at ./wNT200.rsh:222:15:application call to [unknown function] (defined at: ./wNT200.rsh:222:15:function exp)
+int 28500
+byte base64(AA==)
+load 22 // from_/4585
+concat
+load 24 // v4593
+load 12 // value_/4587
+b-
+callsub l20_LF_checkUInt256ResultLen
+callsub l6_LF_mapSet
+// resource: R_Box
+int 28500
+byte base64(AA==)
+load 13 // to_/4586
+concat
+global ZeroAddress
+byte base64()
+global ZeroAddress
+byte base64(AA==)
+load 13 // to_/4586
+concat
+callsub l3_LF_mapRef
+callsub l4_LF_fromSome
+load 12 // value_/4587
+b+
+callsub l20_LF_checkUInt256ResultLen
+callsub l6_LF_mapSet
+byte base64(eYPDXA==)
+load 22 // from_/4585
+concat
+load 13 // to_/4586
+concat
+load 12 // value_/4587
+concat
+log // up to 100 bytes
+// ^ log: "arc200_Transfer" [from_/4585,to_/4586,value_/4587] "arc200_Transfer(address,address,uint256)"
+load 11 // v4598
+load 12 // value_/4587
+b-
+callsub l20_LF_checkUInt256ResultLen
+store 13 // allowance__/4616
+int 28100
+byte base64(AAAAAAAAAAE=)
+load 23 // v4596
+concat
+sha256
+load 13 // allowance__/4616
+callsub l6_LF_mapSet
+byte base64(GWn4ZQ==)
+load 22 // from_/4585
+concat
+txn Sender
+concat
+load 13 // allowance__/4616
+concat
+log // up to 100 bytes
+// ^ log: "arc200_Approval" [from_/4585,owner/3457,allowance__/4616] "arc200_Approval(address,address,uint256)"
+int 1
+store 11 // v4619
+byte base64(AAAAAAAAEgs=)
+load 11 // v4619
+itob
+substring 7 8
+concat
+log // up to 9 bytes
+load 11 // v4619
+itob
+substring 7 8
+store 4 // GV_apiRet :: Null
+global Round
+store 15 // thisConsensusTime/3067
+b _reachl_1
+_api_createBalanceBox2:
+load 13 // .fork299.msg/3458
+extract 1 32
+store 11 // addr/5140
+// resource: R_Box
+byte base64()
+global ZeroAddress
+byte base64(AA==)
+load 11 // addr/5140
+concat
+callsub l3_LF_mapRef
+int 0
+getbyte
+int 0
+==
+assert
+// ^ Claim: ARC200: Balance box already exists
+// at reach standard library:57:5:application
+// at ./wNT200.rsh:287:14:application call to "check" (defined at: reach standard library:49:32:function exp)
+// at ./wNT200.rsh:289:15:application call to [unknown function] (defined at: ./wNT200.rsh:289:15:function exp)
+int 28500
+byte base64(AA==)
+load 11 // addr/5140
+concat
+global ZeroAddress
+callsub l6_LF_mapSet
+int 1
+store 11 // v5146
+byte base64(AAAAAAAAFBo=)
+load 11 // v5146
+itob
+substring 7 8
+concat
+log // up to 9 bytes
+load 11 // v5146
+itob
+substring 7 8
+store 4 // GV_apiRet :: Null
+global Round
+store 15 // thisConsensusTime/3067
+b _reachl_1
+_api_deleteAllowanceBox2:
+load 11 // data_id/5501
+extract 0 32
+load 11 // data_id/5501
+extract 32 32
+concat
+store 12 // v5667
+// resource: R_Box
+byte base64()
+global ZeroAddress
+byte base64(AAAAAAAAAAE=)
+load 12 // v5667
+concat
+sha256
+callsub l3_LF_mapRef
+dup
+store 11 // m/5668
+int 0
+getbyte
+int 1
+==
+assert
+// ^ Claim: ARC200: Allowance box not found
+// at reach standard library:57:5:application
+// at ./wNT200.rsh:321:14:application call to "check" (defined at: reach standard library:49:32:function exp)
+// at ./wNT200.rsh:330:15:application call to [unknown function] (defined at: ./wNT200.rsh:330:15:function exp)
+global ZeroAddress
+load 11 // m/5668
+callsub l4_LF_fromSome
+global ZeroAddress
+b==
+assert
+// ^ Claim: ARC200: Allowance box not empty
+// at reach standard library:57:5:application
+// at ./wNT200.rsh:325:14:application call to "check" (defined at: reach standard library:49:32:function exp)
+// at ./wNT200.rsh:330:15:application call to [unknown function] (defined at: ./wNT200.rsh:330:15:function exp)
+int 28100
+byte base64(AAAAAAAAAAE=)
+load 12 // v5667
+concat
+sha256
+callsub l21_LF_mapDel
+int 1
+store 11 // v5680
+byte base64(AAAAAAAAFjA=)
+load 11 // v5680
+itob
+substring 7 8
+concat
+log // up to 9 bytes
+load 11 // v5680
+itob
+substring 7 8
+store 4 // GV_apiRet :: Null
+global Round
+store 15 // thisConsensusTime/3067
+b _reachl_1
+_api_deleteBalanceBox2:
+load 13 // .fork299.msg/3458
+extract 1 32
+dup
+store 11 // addr/6200
+load 21 // zeroAddress/3046
+!=
+assert
+// ^ Claim: ARC200: Delete balance box to zero address
+// at reach standard library:57:5:application
+// at ./wNT200.rsh:302:14:application call to "check" (defined at: reach standard library:49:32:function exp)
+// at ./wNT200.rsh:309:15:application call to [unknown function] (defined at: ./wNT200.rsh:309:15:function exp)
+// resource: R_Box
+byte base64()
+global ZeroAddress
+byte base64(AA==)
+load 11 // addr/6200
+concat
+callsub l3_LF_mapRef
+dup
+store 12 // m/6204
+int 0
+getbyte
+int 1
+==
+assert
+// ^ Claim: ARC200: Balance box not found
+// at reach standard library:57:5:application
+// at ./wNT200.rsh:306:14:application call to "check" (defined at: reach standard library:49:32:function exp)
+// at ./wNT200.rsh:309:15:application call to [unknown function] (defined at: ./wNT200.rsh:309:15:function exp)
+global ZeroAddress
+load 12 // m/6204
+callsub l4_LF_fromSome
+global ZeroAddress
+b==
+assert
+// ^ Claim: ARC200: Balance box not empty
+// at reach standard library:57:5:application
+// at ./wNT200.rsh:307:14:application call to "check" (defined at: reach standard library:49:32:function exp)
+// at ./wNT200.rsh:309:15:application call to [unknown function] (defined at: ./wNT200.rsh:309:15:function exp)
+int 28500
+byte base64(AA==)
+load 11 // addr/6200
+concat
+callsub l21_LF_mapDel
+int 1
+store 11 // v6213
+byte base64(AAAAAAAAGEU=)
+load 11 // v6213
+itob
+substring 7 8
+concat
+log // up to 9 bytes
+load 11 // v6213
+itob
+substring 7 8
+store 4 // GV_apiRet :: Null
+global Round
+store 15 // thisConsensusTime/3067
+b _reachl_1
+_api_deposit2:
+load 13 // .fork299.msg/3458
+int 1
+extract_uint64
+store 11 // value_/6532
+int 24
+bzero
+load 11 // value_/6532
+itob
+concat
+store 12 // value_/6534
+load 18 // v3053
+txn Sender
+!=
+assert
+// ^ Claim: ARC200: Transfer to self
+// at reach standard library:57:5:application
+// at ./wNT200.rsh:182:16:application call to "check" (defined at: reach standard library:49:32:function exp)
+// at ./wNT200.rsh:250:20:application call to "chkTransfer" (defined at: ./wNT200.rsh:181:50:function exp)
+// at ./wNT200.rsh:249:33:application call to [unknown function] (defined at: ./wNT200.rsh:249:33:function exp)
+// at ./wNT200.rsh:136:31:application call to [unknown function] (defined at: ./wNT200.rsh:249:33:function exp)
+// at ./wNT200.rsh:136:31:application call to [unknown function] (defined at: ./wNT200.rsh:136:31:function exp)
+global ZeroAddress
+// resource: R_Box
+byte base64()
+global ZeroAddress
+byte base64(AA==)
+load 18 // v3053
+concat
+callsub l3_LF_mapRef
+callsub l4_LF_fromSome
+dup
+store 13 // v6540
+load 12 // value_/6534
+b>=
+assert
+// ^ Claim: ARC200: Transfer amount must not be greater than balance
+// at reach standard library:57:5:application
+// at ./wNT200.rsh:183:16:application call to "check" (defined at: reach standard library:49:32:function exp)
+// at ./wNT200.rsh:250:20:application call to "chkTransfer" (defined at: ./wNT200.rsh:181:50:function exp)
+// at ./wNT200.rsh:249:33:application call to [unknown function] (defined at: ./wNT200.rsh:249:33:function exp)
+// at ./wNT200.rsh:136:31:application call to [unknown function] (defined at: ./wNT200.rsh:249:33:function exp)
+// at ./wNT200.rsh:136:31:application call to [unknown function] (defined at: ./wNT200.rsh:136:31:function exp)
+load 11 // value_/6532
+callsub l22_LF_checkTxn_False
+// ^ CheckPay
+// at ./wNT200.rsh:136:31:dot
+int 28500
+byte base64(AA==)
+load 18 // v3053
+concat
+load 13 // v6540
+load 12 // value_/6534
+b-
+callsub l20_LF_checkUInt256ResultLen
+callsub l6_LF_mapSet
+global ZeroAddress
+// resource: R_Box
+byte base64()
+global ZeroAddress
+byte base64(AA==)
+txn Sender
+concat
+callsub l3_LF_mapRef
+callsub l4_LF_fromSome
+load 12 // value_/6534
+b+
+callsub l20_LF_checkUInt256ResultLen
+store 13 // v6753
+int 28500
+byte base64(AA==)
+txn Sender
+concat
+load 13 // v6753
+callsub l6_LF_mapSet
+byte base64(eYPDXA==)
+load 18 // v3053
+concat
+txn Sender
+concat
+load 12 // value_/6534
+concat
+log // up to 100 bytes
+// ^ log: "arc200_Transfer" [v3053,owner/3457,value_/6534] "arc200_Transfer(address,address,uint256)"
+load 13 // v6753
+store 12 // .api95.rng/6756
+byte base64(AAAAAAAAGmQ=)
+load 12 // .api95.rng/6756
+concat
+log // up to 40 bytes
+load 12 // .api95.rng/6756
+store 4 // GV_apiRet :: Null
+load 16 // s/3066
+extract 0 1
+load 16 // s/3066
+extract 1 8
+concat
+load 16 // s/3066
+extract 9 153
+concat
+load 16 // s/3066
+extract 162 32
+concat
+load 16 // s/3066
+extract 194 32
+concat
+load 16 // s/3066
+extract 226 1
+concat
+load 16 // s/3066
+extract 227 8
+concat
+load 16 // s/3066
+int 235
+extract_uint64
+load 11 // value_/6532
++
+itob
+concat
+load 16 // s/3066
+extract 243 32
+concat
+load 16 // s/3066
+int 275
+int 32
+extract3
+concat
+global Round
+load 14 // netBalance/3070
+load 11 // value_/6532
++
+store 14 // netBalance/3070
+store 15 // thisConsensusTime/3067
+store 16 // s/3066
+b _reachl_1
+_api_deregister2:
+load 16 // s/3066
+extract 162 32
+store 22 // v7054
+txn Sender
+load 22 // v7054
+==
+assert
+// ^ Claim: ARC200: Only manager can grant
+// at reach standard library:57:5:application
+// at ./wNT200.rsh:365:14:application call to "check" (defined at: reach standard library:49:32:function exp)
+// at ./wNT200.rsh:364:30:application call to [unknown function] (defined at: ./wNT200.rsh:364:30:function exp)
+// at ./wNT200.rsh:136:31:application call to [unknown function] (defined at: ./wNT200.rsh:364:30:function exp)
+// at ./wNT200.rsh:136:31:application call to [unknown function] (defined at: ./wNT200.rsh:136:31:function exp)
+load 16 // s/3066
+extract 226 1
+btoi
+assert
+// ^ Claim: Must be registered
+// at reach standard library:57:5:application
+// at ./wNT200.rsh:366:14:application call to "check" (defined at: reach standard library:49:32:function exp)
+// at ./wNT200.rsh:364:30:application call to [unknown function] (defined at: ./wNT200.rsh:364:30:function exp)
+// at ./wNT200.rsh:136:31:application call to [unknown function] (defined at: ./wNT200.rsh:364:30:function exp)
+// at ./wNT200.rsh:136:31:application call to [unknown function] (defined at: ./wNT200.rsh:136:31:function exp)
+load 16 // s/3066
+extract 9 153
+dup
+store 11 // m/7059
+int 0
+getbyte
+assert
+// ^ Claim: Must have key info
+// at reach standard library:57:5:application
+// at ./wNT200.rsh:367:14:application call to "check" (defined at: reach standard library:49:32:function exp)
+// at ./wNT200.rsh:364:30:application call to [unknown function] (defined at: ./wNT200.rsh:364:30:function exp)
+// at ./wNT200.rsh:136:31:application call to [unknown function] (defined at: ./wNT200.rsh:364:30:function exp)
+// at ./wNT200.rsh:136:31:application call to [unknown function] (defined at: ./wNT200.rsh:136:31:function exp)
+load 14 // netBalance/3070
+int 1000
++
+store 13 // v7079
+int 1000
+callsub l22_LF_checkTxn_False
+// ^ CheckPay
+// at ./wNT200.rsh:136:31:dot
+load 11 // m/7059
+int 0
+getbyte
+switch l23_None l24_Some
+b errl
+_api_destroy2:
+load 16 // s/3066
+extract 162 32
+store 13 // v7853
+txn Sender
+load 13 // v7853
+==
+assert
+// ^ Claim: ARC200: Only manager can grant
+// at reach standard library:57:5:application
+// at ./wNT200.rsh:419:14:application call to "check" (defined at: reach standard library:49:32:function exp)
+// at ./wNT200.rsh:425:15:application call to [unknown function] (defined at: ./wNT200.rsh:425:15:function exp)
+byte base64(AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA)
+int 0
+getbyte
+int 1
+==
+assert
+// ^ Claim: ARC200: Zero address balance box not found
+// at reach standard library:57:5:application
+// at ./wNT200.rsh:420:14:application call to "check" (defined at: reach standard library:49:32:function exp)
+// at ./wNT200.rsh:425:15:application call to [unknown function] (defined at: ./wNT200.rsh:425:15:function exp)
+// resource: R_Box
+int 28500
+byte base64(AA==)
+load 21 // zeroAddress/3046
+concat
+callsub l21_LF_mapDel
+// resource: R_Box
+int 28500
+byte base64(AA==)
+load 18 // v3053
+concat
+callsub l21_LF_mapDel
+load 16 // s/3066
+int 235
+extract_uint64
+dup
+store 12 // v7861
+// resource: R_Account
+load 13 // v7853
+callsub l25_LF_makeTxn_False_False_False_True
+byte base64()
+store 11 // v7867
+byte base64(AAAAAAAAHrs=)
+load 11 // v7867
+concat
+log // up to 8 bytes
+load 11 // v7867
+store 4 // GV_apiRet :: Null
+byte base64(AQ==)
+load 16 // s/3066
+extract 1 8
+concat
+load 16 // s/3066
+extract 9 153
+concat
+load 13 // v7853
+concat
+load 16 // s/3066
+extract 194 32
+concat
+load 16 // s/3066
+extract 226 1
+concat
+load 16 // s/3066
+extract 227 8
+concat
+load 12 // v7861
+itob
+concat
+load 16 // s/3066
+extract 243 32
+concat
+load 16 // s/3066
+int 275
+int 32
+extract3
+concat
+global Round
+load 14 // netBalance/3070
+load 12 // v7861
+-
+store 14 // netBalance/3070
+store 15 // thisConsensusTime/3067
+store 16 // s/3066
+b _reachl_1
+_api_grant2:
+load 13 // .fork299.msg/3458
+extract 1 32
+dup
+store 11 // addr/8397
+load 21 // zeroAddress/3046
+!=
+assert
+// ^ Claim: ARC200: Grant zero address
+// at reach standard library:57:5:application
+// at ./wNT200.rsh:403:14:application call to "check" (defined at: reach standard library:49:32:function exp)
+// at ./wNT200.rsh:407:15:application call to [unknown function] (defined at: ./wNT200.rsh:407:15:function exp)
+load 16 // s/3066
+extract 162 32
+store 12 // v8401
+load 11 // addr/8397
+load 12 // v8401
+!=
+assert
+// ^ Claim: ARC200: Grant to manager
+// at reach standard library:57:5:application
+// at ./wNT200.rsh:404:14:application call to "check" (defined at: reach standard library:49:32:function exp)
+// at ./wNT200.rsh:407:15:application call to [unknown function] (defined at: ./wNT200.rsh:407:15:function exp)
+txn Sender
+load 12 // v8401
+==
+assert
+// ^ Claim: ARC200: Only manager can grant
+// at reach standard library:57:5:application
+// at ./wNT200.rsh:405:14:application call to "check" (defined at: reach standard library:49:32:function exp)
+// at ./wNT200.rsh:407:15:application call to [unknown function] (defined at: ./wNT200.rsh:407:15:function exp)
+byte base64()
+store 12 // v8409
+byte base64(AAAAAAAAINk=)
+load 12 // v8409
+concat
+log // up to 8 bytes
+load 12 // v8409
+store 4 // GV_apiRet :: Null
+load 16 // s/3066
+extract 0 1
+load 16 // s/3066
+extract 1 8
+concat
+load 16 // s/3066
+extract 9 153
+concat
+load 11 // addr/8397
+concat
+load 16 // s/3066
+extract 194 32
+concat
+load 16 // s/3066
+extract 226 1
+concat
+load 16 // s/3066
+extract 227 8
+concat
+load 16 // s/3066
+extract 235 8
+concat
+load 16 // s/3066
+extract 243 32
+concat
+load 16 // s/3066
+int 275
+int 32
+extract3
+concat
+global Round
+store 15 // thisConsensusTime/3067
+store 16 // s/3066
+b _reachl_1
+_api_register2:
+load 16 // s/3066
+extract 162 32
+store 26 // v8603
+txn Sender
+load 26 // v8603
+==
+assert
+// ^ Claim: ARC200: Only manager can grant
+// at reach standard library:57:5:application
+// at ./wNT200.rsh:338:14:application call to "check" (defined at: reach standard library:49:32:function exp)
+// at ./wNT200.rsh:337:76:application call to [unknown function] (defined at: ./wNT200.rsh:337:76:function exp)
+// at ./wNT200.rsh:136:31:application call to [unknown function] (defined at: ./wNT200.rsh:337:76:function exp)
+// at ./wNT200.rsh:136:31:application call to [unknown function] (defined at: ./wNT200.rsh:136:31:function exp)
+int 1000
+callsub l22_LF_checkTxn_False
+// ^ CheckPay
+// at ./wNT200.rsh:136:31:dot
+load 11 // data_id/8561
+extract 0 32
+store 25 // votekey/8940
+load 11 // data_id/8561
+extract 32 32
+store 24 // selkey/8941
+load 11 // data_id/8561
+extract 64 64
+store 23 // spkey/8942
+load 11 // data_id/8561
+int 128
+extract_uint64
+store 22 // votefst/8943
+load 11 // data_id/8561
+int 136
+extract_uint64
+store 13 // votelst/8944
+load 11 // data_id/8561
+int 144
+extract_uint64
+store 12 // votekd/8945
+int 1
+store 11 // v8955
+byte base64(AAAAAAAAIvs=)
+load 11 // v8955
+itob
+substring 7 8
+concat
+log // up to 9 bytes
+load 11 // v8955
+itob
+substring 7 8
+store 4 // GV_apiRet :: Null
+load 25 // votekey/8940
+load 24 // selkey/8941
+concat
+load 23 // spkey/8942
+concat
+load 22 // votefst/8943
+itob
+concat
+load 13 // votelst/8944
+itob
+concat
+load 12 // votekd/8945
+itob
+concat
+store 11 // v8967
+byte base64(NXZsEQ==)
+load 11 // v8967
+concat
+log // up to 156 bytes
+// ^ log: "e_register" [v8967] "e_register((byte[32],byte[32],byte[64],uint64,uint64,uint64))"
+byte base64(xT2wLg==)
+load 25 // votekey/8940
+concat
+log // up to 36 bytes
+// ^ log: "e_votekey" [votekey/8940] "e_votekey(byte[32])"
+byte base64(hR7IYQ==)
+load 24 // selkey/8941
+concat
+log // up to 36 bytes
+// ^ log: "e_selkey" [selkey/8941] "e_selkey(byte[32])"
+byte base64(J8cM7g==)
+load 23 // spkey/8942
+concat
+log // up to 68 bytes
+// ^ log: "e_spkey" [spkey/8942] "e_spkey(byte[64])"
+byte base64(cHNR0A==)
+load 22 // votefst/8943
+itob
+concat
+log // up to 12 bytes
+// ^ log: "e_votefst" [votefst/8943] "e_votefst(uint64)"
+byte base64(wsceCA==)
+load 13 // votelst/8944
+itob
+concat
+log // up to 12 bytes
+// ^ log: "e_votelst" [votelst/8944] "e_votelst(uint64)"
+byte base64(KXUn7A==)
+load 12 // votekd/8945
+itob
+concat
+log // up to 12 bytes
+// ^ log: "e_votekd" [votekd/8945] "e_votekd(uint64)"
+int 1000
+txn Sender
+callsub l25_LF_makeTxn_False_False_False_True
+load 16 // s/3066
+extract 0 1
+load 16 // s/3066
+extract 1 8
+concat
+byte base64(AQ==)
+load 11 // v8967
+concat
+concat
+load 26 // v8603
+concat
+load 16 // s/3066
+extract 194 32
+concat
+byte base64(AQ==)
+concat
+load 16 // s/3066
+extract 227 8
+concat
+load 16 // s/3066
+extract 235 8
+concat
+load 16 // s/3066
+extract 243 32
+concat
+load 16 // s/3066
+int 275
+int 32
+extract3
+concat
+global Round
+load 14 // netBalance/3070
+int 1000
++
+int 1000
+-
+store 14 // netBalance/3070
+store 15 // thisConsensusTime/3067
+store 16 // s/3066
+b _reachl_1
+_api_touch2:
+global CurrentApplicationAddress
+balance
+global CurrentApplicationAddress
+min_balance
+-
+load 14 // netBalance/3070
+-
+l26_getActualBalance:
+dup
+store 11 // .api102.rng/9501
+// resource: R_Account
+load 16 // s/3066
+extract 162 32
+callsub l25_LF_makeTxn_False_False_False_True
+byte base64(AAAAAAAAJR0=)
+load 11 // .api102.rng/9501
+itob
+concat
+log // up to 16 bytes
+load 11 // .api102.rng/9501
+itob
+store 4 // GV_apiRet :: Null
+global Round
+load 11 // .api102.rng/9501
+load 14 // netBalance/3070
++
+load 11 // .api102.rng/9501
+-
+store 14 // netBalance/3070
+store 15 // thisConsensusTime/3067
+b _reachl_1
+_api_withdraw2:
+load 13 // .fork299.msg/3458
+int 1
+extract_uint64
+store 11 // value_/10025
+load 16 // s/3066
+int 235
+extract_uint64
+store 13 // v10026
+load 11 // value_/10025
+load 13 // v10026
+<=
+assert
+// ^ Claim: ARC200: Withdraw amount too large
+// at reach standard library:57:5:application
+// at ./wNT200.rsh:268:14:application call to "check" (defined at: reach standard library:49:32:function exp)
+// at ./wNT200.rsh:271:15:application call to [unknown function] (defined at: ./wNT200.rsh:271:15:function exp)
+int 24
+bzero
+load 11 // value_/10025
+itob
+concat
+store 24 // value_/10031
+txn Sender
+load 18 // v3053
+!=
+assert
+// ^ Claim: ARC200: Transfer to self
+// at reach standard library:57:5:application
+// at ./wNT200.rsh:204:16:application call to "check" (defined at: reach standard library:49:32:function exp)
+// at ./wNT200.rsh:269:24:application call to "chkTransferFrom" (defined at: ./wNT200.rsh:203:64:function exp)
+// at ./wNT200.rsh:271:15:application call to [unknown function] (defined at: ./wNT200.rsh:271:15:function exp)
+global ZeroAddress
+// resource: R_Box
+byte base64()
+global ZeroAddress
+byte base64(AA==)
+txn Sender
+concat
+callsub l3_LF_mapRef
+callsub l4_LF_fromSome
+dup
+store 12 // v10037
+load 24 // value_/10031
+b>=
+assert
+// ^ Claim: ARC200: Amount must not be greater than balance
+// at reach standard library:57:5:application
+// at ./wNT200.rsh:205:16:application call to "check" (defined at: reach standard library:49:32:function exp)
+// at ./wNT200.rsh:269:24:application call to "chkTransferFrom" (defined at: ./wNT200.rsh:203:64:function exp)
+// at ./wNT200.rsh:271:15:application call to [unknown function] (defined at: ./wNT200.rsh:271:15:function exp)
+txn Sender
+load 18 // v3053
+concat
+store 23 // v10040
+global ZeroAddress
+// resource: R_Box
+byte base64()
+global ZeroAddress
+byte base64(AAAAAAAAAAE=)
+load 23 // v10040
+concat
+sha256
+callsub l3_LF_mapRef
+callsub l4_LF_fromSome
+dup
+store 22 // v10042
+load 24 // value_/10031
+b>=
+assert
+// ^ Claim: ARC200: Amount must not be greater than allowance
+// at reach standard library:57:5:application
+// at ./wNT200.rsh:209:16:application call to "check" (defined at: reach standard library:49:32:function exp)
+// at ./wNT200.rsh:269:24:application call to "chkTransferFrom" (defined at: ./wNT200.rsh:203:64:function exp)
+// at ./wNT200.rsh:271:15:application call to [unknown function] (defined at: ./wNT200.rsh:271:15:function exp)
+int 28500
+byte base64(AA==)
+txn Sender
+concat
+load 12 // v10037
+load 24 // value_/10031
+b-
+callsub l20_LF_checkUInt256ResultLen
+callsub l6_LF_mapSet
+// resource: R_Box
+int 28500
+byte base64(AA==)
+load 18 // v3053
+concat
+global ZeroAddress
+byte base64()
+global ZeroAddress
+byte base64(AA==)
+load 18 // v3053
+concat
+callsub l3_LF_mapRef
+callsub l4_LF_fromSome
+load 24 // value_/10031
+b+
+callsub l20_LF_checkUInt256ResultLen
+callsub l6_LF_mapSet
+byte base64(eYPDXA==)
+txn Sender
+concat
+load 18 // v3053
+concat
+load 24 // value_/10031
+concat
+log // up to 100 bytes
+// ^ log: "arc200_Transfer" [owner/3457,v3053,value_/10031] "arc200_Transfer(address,address,uint256)"
+load 22 // v10042
+load 24 // value_/10031
+b-
+callsub l20_LF_checkUInt256ResultLen
+store 12 // allowance__/10061
+int 28100
+byte base64(AAAAAAAAAAE=)
+load 23 // v10040
+concat
+sha256
+load 12 // allowance__/10061
+callsub l6_LF_mapSet
+byte base64(GWn4ZQ==)
+txn Sender
+concat
+load 18 // v3053
+concat
+load 12 // allowance__/10061
+concat
+log // up to 100 bytes
+// ^ log: "arc200_Approval" [owner/3457,v3053,allowance__/10061] "arc200_Approval(address,address,uint256)"
+load 11 // value_/10025
+txn Sender
+callsub l25_LF_makeTxn_False_False_False_True
+global ZeroAddress
+byte base64()
+global ZeroAddress
+byte base64(AA==)
+txn Sender
+concat
+callsub l3_LF_mapRef
+callsub l4_LF_fromSome
+store 12 // .api96.rng/10069
+byte base64(AAAAAAAAJ1U=)
+load 12 // .api96.rng/10069
+concat
+log // up to 40 bytes
+load 12 // .api96.rng/10069
+store 4 // GV_apiRet :: Null
+load 16 // s/3066
+extract 0 1
+load 16 // s/3066
+extract 1 8
+concat
+load 16 // s/3066
+extract 9 153
+concat
+load 16 // s/3066
+extract 162 32
+concat
+load 16 // s/3066
+extract 194 32
+concat
+load 16 // s/3066
+extract 226 1
+concat
+load 16 // s/3066
+extract 227 8
+concat
+load 13 // v10026
+load 11 // value_/10025
+-
+itob
+concat
+load 16 // s/3066
+extract 243 32
+concat
+load 16 // s/3066
+int 275
+int 32
+extract3
+concat
+global Round
+load 14 // netBalance/3070
+load 11 // value_/10025
+-
+store 14 // netBalance/3070
+store 15 // thisConsensusTime/3067
+store 16 // s/3066
+b _reachl_1
+_reacha_arc200_allowance:
+load 1 // GV_currentStep :: UInt
+int 3
+==
+assert
+// ^ Claim: Incorrect state: not leaf
+// at ./wNT200.rsh:75:23:property binding
+callsub l2_LF_svsLoad_3
+global ZeroAddress
+// resource: R_Box
+byte base64()
+global ZeroAddress
+byte base64(AAAAAAAAAAE=)
+load 12 // v18662
+load 11 // v18663
+concat
+concat
+sha256
+callsub l3_LF_mapRef
+callsub l4_LF_fromSome
+store 4 // GV_apiRet :: Null
+apiReturn_check:
+txn OnCompletion
+int NoOp
+==
+assert
+// checked on completion
+b apiReturn_noCheck
+_reacha_arc200_approve:
+int 8
+bzero
+byte base64(AA==)
+load 12 // v18696
+load 11 // v18697
+concat
+concat
+int 88
+bzero
+concat
+concat
+store 11 // v18792
+_reachi_2:
+int 3
+load 1 // GV_currentStep :: UInt
+==
+assert
+callsub l2_LF_svsLoad_3
+load 11 // v18792
+int 0
+extract_uint64
+store 12 // v18791
+load 11 // v18792
+extract 8 153
+store 13 // .fork299.msg/3458
+byte base64(d8o/pA==)
+load 12 // v18791
+itob
+concat
+load 13 // .fork299.msg/3458
+concat
+log // up to 165 bytes
+// ^ log: "_reach_e2" [v18791,.fork299.msg/3458] "_reach_e2(uint64,(byte,byte[152]))"
+load 12 // v18791
+callsub l5_LF_timeCheck
+load 13 // .fork299.msg/3458
+int 0
+getbyte
+switch l7_arc200_approve0_299 l8_arc200_transfer0_299 l9_arc200_transferFrom0_299 l10_createBalanceBox0_299 l11_deleteAllowanceBox0_299 l12_deleteBalanceBox0_299 l13_deposit0_299 l14_deregister0_299 l15_destroy0_299 l16_grant0_299 l17_register0_299 l18_touch0_299 l19_withdraw0_299
+b errl
+_reacha_arc200_balanceOf:
+load 1 // GV_currentStep :: UInt
+int 3
+==
+assert
+// ^ Claim: Incorrect state: not leaf
+// at ./wNT200.rsh:74:23:property binding
+callsub l2_LF_svsLoad_3
+global ZeroAddress
+// resource: R_Box
+byte base64()
+global ZeroAddress
+byte base64(AA==)
+load 11 // v18668
+concat
+callsub l3_LF_mapRef
+callsub l4_LF_fromSome
+store 4 // GV_apiRet :: Null
+b apiReturn_check
+_reacha_arc200_decimals:
+load 1 // GV_currentStep :: UInt
+int 3
+==
+assert
+// ^ Claim: Incorrect state: not leaf
+// at ./wNT200.rsh:72:22:property binding
+callsub l2_LF_svsLoad_3
+load 19 // v3050
+itob
+store 4 // GV_apiRet :: Null
+b apiReturn_check
+_reacha_arc200_name:
+load 1 // GV_currentStep :: UInt
+int 3
+==
+assert
+// ^ Claim: Incorrect state: not leaf
+// at ./wNT200.rsh:70:18:property binding
+callsub l2_LF_svsLoad_3
+load 20 // meta/3047
+extract 8 32
+store 4 // GV_apiRet :: Null
+b apiReturn_check
+_reacha_arc200_symbol:
+load 1 // GV_currentStep :: UInt
+int 3
+==
+assert
+// ^ Claim: Incorrect state: not leaf
+// at ./wNT200.rsh:71:20:property binding
+callsub l2_LF_svsLoad_3
+load 20 // meta/3047
+extract 40 8
+store 4 // GV_apiRet :: Null
+b apiReturn_check
+_reacha_arc200_totalSupply:
+load 1 // GV_currentStep :: UInt
+int 3
+==
+assert
+// ^ Claim: Incorrect state: not leaf
+// at ./wNT200.rsh:73:25:property binding
+callsub l2_LF_svsLoad_3
+byte base64(//////////////////////////////////////////8=)
+store 4 // GV_apiRet :: Null
+b apiReturn_check
+_reacha_arc200_transfer:
+int 8
+bzero
+byte base64(AQ==)
+load 12 // v18704
+load 11 // v18705
+concat
+concat
+int 88
+bzero
+concat
+concat
+store 11 // v18792
+b _reachi_2
+_reacha_arc200_transferFrom:
+int 8
+bzero
+byte base64(Ag==)
+load 13 // v18712
+load 12 // v18713
+concat
+load 11 // v18714
+concat
+concat
+int 56
+bzero
+concat
+concat
+store 11 // v18792
+b _reachi_2
+_reacha_circulatingSupply:
+load 1 // GV_currentStep :: UInt
+int 3
+==
+assert
+// ^ Claim: Incorrect state: not leaf
+// at ./wNT200.rsh:78:24:property binding
+callsub l2_LF_svsLoad_3
+int 24
+bzero
+load 16 // s/3066
+extract 235 8
+concat
+store 4 // GV_apiRet :: Null
+b apiReturn_check
+_reacha_createBalanceBox:
+int 8
+bzero
+byte base64(Aw==)
+load 11 // v18722
+concat
+int 120
+bzero
+concat
+concat
+store 11 // v18792
+b _reachi_2
+_reacha_deleteAllowanceBox:
+int 8
+bzero
+byte base64(BA==)
+load 12 // v18728
+load 11 // v18729
+concat
+concat
+int 88
+bzero
+concat
+concat
+store 11 // v18792
+b _reachi_2
+_reacha_deleteBalanceBox:
+int 8
+bzero
+byte base64(BQ==)
+load 11 // v18736
+concat
+int 120
+bzero
+concat
+concat
+store 11 // v18792
+b _reachi_2
+_reacha_deposit:
+int 8
+bzero
+byte base64(Bg==)
+load 11 // v18742
+itob
+concat
+int 144
+bzero
+concat
+concat
+store 11 // v18792
+b _reachi_2
+_reacha_deregister:
+byte base64(AAAAAAAAAAAHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=)
+store 11 // v18792
+b _reachi_2
+_reacha_destroy:
+byte base64(AAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=)
+store 11 // v18792
+b _reachi_2
+_reacha_grant:
+int 8
+bzero
+byte base64(CQ==)
+load 11 // v18756
+concat
+int 120
+bzero
+concat
+concat
+store 11 // v18792
+b _reachi_2
+_reacha_hasAllowance:
+load 1 // GV_currentStep :: UInt
+int 3
+==
+assert
+// ^ Claim: Incorrect state: not leaf
+// at ./wNT200.rsh:77:19:property binding
+callsub l2_LF_svsLoad_3
+// resource: R_Box
+byte base64()
+global ZeroAddress
+byte base64(AAAAAAAAAAE=)
+load 12 // v18682
+load 11 // v18683
+concat
+concat
+sha256
+callsub l3_LF_mapRef
+int 0
+getbyte
+int 1
+==
+itob
+substring 7 8
+store 4 // GV_apiRet :: Null
+b apiReturn_check
+_reacha_hasBalance:
+load 1 // GV_currentStep :: UInt
+int 3
+==
+assert
+// ^ Claim: Incorrect state: not leaf
+// at ./wNT200.rsh:76:17:property binding
+callsub l2_LF_svsLoad_3
+// resource: R_Box
+byte base64()
+global ZeroAddress
+byte base64(AA==)
+load 11 // v18688
+concat
+callsub l3_LF_mapRef
+int 0
+getbyte
+int 1
+==
+itob
+substring 7 8
+store 4 // GV_apiRet :: Null
+b apiReturn_check
+_reacha_manager:
+load 1 // GV_currentStep :: UInt
+int 3
+==
+assert
+// ^ Claim: Incorrect state: not leaf
+// at ./wNT200.rsh:80:14:property binding
+callsub l2_LF_svsLoad_3
+load 16 // s/3066
+extract 162 32
+store 4 // GV_apiRet :: Null
+b apiReturn_check
+_reacha_register:
+int 8
+bzero
+byte base64(Cg==)
+load 16 // v18762
+load 15 // v18763
+concat
+load 14 // v18764
+concat
+load 13 // v18765
+itob
+concat
+load 12 // v18766
+itob
+concat
+load 11 // v18767
+itob
+concat
+concat
+concat
+store 11 // v18792
+b _reachi_2
+_reacha_state:
+load 1 // GV_currentStep :: UInt
+int 3
+==
+assert
+// ^ Claim: Incorrect state: not leaf
+// at ./wNT200.rsh:79:12:property binding
+callsub l2_LF_svsLoad_3
+load 16 // s/3066
+extract 194 32
+load 16 // s/3066
+extract 227 8
+concat
+load 16 // s/3066
+extract 1 8
+concat
+load 16 // s/3066
+extract 243 32
+concat
+load 16 // s/3066
+int 275
+int 32
+extract3
+concat
+load 16 // s/3066
+extract 162 32
+concat
+load 16 // s/3066
+extract 235 8
+concat
+load 16 // s/3066
+extract 226 1
+concat
+load 16 // s/3066
+extract 9 153
+concat
+load 16 // s/3066
+extract 0 1
+concat
+store 4 // GV_apiRet :: Null
+b apiReturn_check
+_reacha_touch:
+byte base64(AAAAAAAAAAALAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=)
+store 11 // v18792
+b _reachi_2
+_reacha_withdraw:
+int 8
+bzero
+byte base64(DA==)
+load 11 // v18782
+itob
+concat
+int 144
+bzero
+concat
+concat
+store 11 // v18792
+b _reachi_2
+_reachi_0:
+load 11 // v18789
+int 0
+extract_uint64
+store 12 // v18788
+load 11 // v18789
+extract 8 32
+store 21 // zeroAddress/3046
+load 11 // v18789
+extract 40 48
+store 20 // meta/3047
+byte base64(SSmKSA==)
+load 12 // v18788
+itob
+concat
+load 21 // zeroAddress/3046
+concat
+load 20 // meta/3047
+concat
+log // up to 92 bytes
+// ^ log: "_reach_e0" [v18788,zeroAddress/3046,meta/3047] "_reach_e0(uint64,address,(uint64,byte[32],byte[8]))"
+load 12 // v18788
+callsub l5_LF_timeCheck
+load 20 // meta/3047
+int 0
+extract_uint64
+dup
+store 19 // v3050
+int 256
+<=
+assert
+// ^ Claim: ARC200: Decimals must be less than 19
+// at reach standard library:57:5:application
+// at ./wNT200.rsh:102:12:application call to "check" (defined at: reach standard library:49:32:function exp)
+global CurrentApplicationAddress
+store 18 // v3053
+// resource: R_Box
+int 28500
+byte base64(AA==)
+load 18 // v3053
+concat
+byte base64(//////////////////////////////////////////8=)
+callsub l6_LF_mapSet
+// resource: R_Box
+int 28500
+byte base64(AA==)
+load 21 // zeroAddress/3046
+concat
+global ZeroAddress
+callsub l6_LF_mapSet
+byte base64(//////////////////////////////////////////8=)
+store 11 // v3055
+byte base64(eYPDXA==)
+load 21 // zeroAddress/3046
+concat
+load 18 // v3053
+concat
+load 11 // v3055
+concat
+log // up to 100 bytes
+// ^ log: "arc200_Transfer" [zeroAddress/3046,v3053,v3055] "arc200_Transfer(address,address,uint256)"
+int 153
+bzero
+store 17 // v3064
+byte base64(AA==)
+load 19 // v3050
+itob
+concat
+load 17 // v3064
+concat
+txn Sender
+concat
+load 20 // meta/3047
+extract 8 32
+concat
+byte base64(AA==)
+concat
+load 20 // meta/3047
+extract 40 8
+concat
+int 8
+bzero
+concat
+byte base64(//////////////////////////////////////////8=)
+concat
+load 21 // zeroAddress/3046
+concat
+global Round
+int 0
+store 14 // netBalance/3070
+store 15 // thisConsensusTime/3067
+store 16 // s/3066
+b _reachl_1
+_reachp_0:
+callsub l0_LF_wasntMeth
+int 100000
+callsub l1_LF_mbrAdd
+txna ApplicationArgs 1
+store 11 // v18789
+b _reachi_0
+_reachp_2:
+callsub l0_LF_wasntMeth
+txna ApplicationArgs 1
+store 11 // v18792
+b _reachi_2
+alloc:
+int 0
+txn GlobalNumUint
+==
+assert
+int 6
+txn GlobalNumByteSlice
+==
+assert
+int 0
+txn LocalNumUint
+==
+assert
+int 0
+txn LocalNumByteSlice
+==
+assert
+callsub l0_LF_wasntMeth
+int 588
+bzero
+int 0
+int 0
+updateStateNoOp:
+store 2 // GV_currentTime :: UInt
+store 1 // GV_currentStep :: UInt
+byte base64(AA==)
+dig 1
+extract 0 127
+app_global_put
+byte base64(AQ==)
+dig 1
+extract 127 127
+app_global_put
+byte base64(Ag==)
+dig 1
+extract 254 127
+app_global_put
+byte base64(Aw==)
+dig 1
+int 381
+int 127
+extract3
+app_global_put
+byte base64(BA==)
+swap
+int 508
+int 80
+extract3
+app_global_put
+byte base64()
+load 1 // GV_currentStep :: UInt
+itob
+load 2 // GV_currentTime :: UInt
+itob
+concat
+app_global_put
+txn OnCompletion
+int NoOp
+==
+assert
+// checked on completion
+callsub l29_LF_updateMbr
+b updateState
+arc200_allowanceAcq4c8hE24gt_EoooVBPqZqn0ii698pjkLnoeezacoY_:
+txna ApplicationArgs 1
+txna ApplicationArgs 2
+store 11 // v18663
+store 12 // v18662
+b _reacha_arc200_allowance
+arc200_approve_aB7vxbW4PSDQsylrpf8z0pJ5DG0KY_ArfOZuMRX9a63o_:
+txna ApplicationArgs 1
+txna ApplicationArgs 2
+store 11 // v18697
+store 12 // v18696
+b _reacha_arc200_approve
+arc200_balanceOfAuLlni3r2JwN05I0cJndHjbQh_B7u8HtXeT2u87KRQA_:
+txna ApplicationArgs 1
+store 11 // v18668
+b _reacha_arc200_balanceOf
+arc200_decimals_0i3zaAdWGk8HTrh900e3z__BopVJHiDErU4VQKq4WR4_:
+b _reacha_arc200_decimals
+arc200_name__bytiUdKDeBB_7Wod3lAotr0fjTghvzrL3y_c3feTU4zUwo_:
+b _reacha_arc200_name
+arc200_symbol__bRs3rJdpYyd5U9jg4y_u6hZgTc3UoO_SmNhgJJ2m0lrY_:
+b _reacha_arc200_symbol
+arc200_totalSupp2vgBT0Wqe9Jv1e5PQOIiaRDt7ILIY6S8h4wVn48Sh2s_:
+b _reacha_arc200_totalSupply
+arc200_transferF8dq513jzwlGNyuNOIzPPYDtVSgiLxnp3MTKwA15nTo4_:
+txna ApplicationArgs 1
+txna ApplicationArgs 2
+txna ApplicationArgs 3
+store 11 // v18714
+store 12 // v18713
+store 13 // v18712
+b _reacha_arc200_transferFrom
+arc200_transfer_mW6YBiBj2tVEDo94HJlsKqWJTJtaEhfhx1b4rELoCvQ_:
+txna ApplicationArgs 1
+txna ApplicationArgs 2
+store 11 // v18705
+store 12 // v18704
+b _reacha_arc200_transfer
+circulatingSuppli6X5aS7VIKzCjZOyZz0DShGSYzZzFbCnKJc6ZUYOQv8_:
+b _reacha_circulatingSupply
+createBalanceBoxchSbxpUd21iIKxD2bWZUfsnE9y0OLFr_OoRnQeAq03c_:
+txna ApplicationArgs 1
+store 11 // v18722
+b _reacha_createBalanceBox
+deleteAllowanceBGMyt4mT0eUv_30cNP17_WO9zpbGtARPERiaZTj22D4M_:
+txna ApplicationArgs 1
+txna ApplicationArgs 2
+store 11 // v18729
+store 12 // v18728
+b _reacha_deleteAllowanceBox
+deleteBalanceBox7ebt7a0gvt3x0skRUbx_aCIeRGvqsuk5MyUE3cQhKSI_:
+txna ApplicationArgs 1
+store 11 // v18736
+b _reacha_deleteBalanceBox
+deposit_uint64_ukUHBBSU8NflmqV48ePRDeliVnRzfYeahGSa54Q8eDFY_:
+txna ApplicationArgs 1
+btoi
+store 11 // v18742
+b _reacha_deposit
+deregister__byteqHgy_gqmrtc17aeA2T0sHueTcvRaDPFOgRhkKXpl2f0_:
+b _reacha_deregister
+destroy__voidyQs01swZ_UAEgoudVZNc2fO1ReK4LXRCsQSyR_cTRkI_:
+b _reacha_destroy
+grant_address_voB0P2GtSPgk8keWQFFrigNPpqwOzZufpkaNLj5BW3NLk_:
+txna ApplicationArgs 1
+store 11 // v18756
+b _reacha_grant
+hasAllowance_add8MigYkFtGyiY_nwrKWhHmCnIsjROuTjO4Faff7edDW0_:
+txna ApplicationArgs 1
+txna ApplicationArgs 2
+store 11 // v18683
+store 12 // v18682
+b _reacha_hasAllowance
+hasBalance_addreiUYh5_XlPYmV0QW7Va5b0smQFFe3ff7oqyFvTefxscI_:
+txna ApplicationArgs 1
+store 11 // v18688
+b _reacha_hasBalance
+l10_createBalanceBox0_299:
+b _api_createBalanceBox2
+l11_deleteAllowanceBox0_299:
+load 13 // .fork299.msg/3458
+extract 1 64
+store 11 // data_id/5501
+b _api_deleteAllowanceBox2
+l12_deleteBalanceBox0_299:
+b _api_deleteBalanceBox2
+l13_deposit0_299:
+b _api_deposit2
+l14_deregister0_299:
+b _api_deregister2
+l15_destroy0_299:
+b _api_destroy2
+l16_grant0_299:
+b _api_grant2
+l17_register0_299:
+load 13 // .fork299.msg/3458
+extract 1 152
+store 11 // data_id/8561
+b _api_register2
+l18_touch0_299:
+b _api_touch2
+l19_withdraw0_299:
+b _api_withdraw2
+l23_None:
+int 0
+store 11 // v7301
+byte base64(AAAAAAAAHIU=)
+load 11 // v7301
+itob
+substring 7 8
+concat
+log // up to 9 bytes
+load 11 // v7301
+itob
+substring 7 8
+store 4 // GV_apiRet :: Null
+global Round
+load 13 // v7079
+store 14 // netBalance/3070
+store 15 // thisConsensusTime/3067
+b _reachl_1
+l24_Some:
+load 11 // m/7059
+extract 1 152
+store 12 // ki/7310
+int 1
+store 11 // v7311
+byte base64(AAAAAAAAHI8=)
+load 11 // v7311
+itob
+substring 7 8
+concat
+log // up to 9 bytes
+load 11 // v7311
+itob
+substring 7 8
+store 4 // GV_apiRet :: Null
+byte base64(1tZgTA==)
+load 12 // ki/7310
+concat
+log // up to 156 bytes
+// ^ log: "e_deregister" [ki/7310] "e_deregister((byte[32],byte[32],byte[64],uint64,uint64,uint64))"
+int 1000
+txn Sender
+callsub l25_LF_makeTxn_False_False_False_True
+load 16 // s/3066
+extract 0 1
+load 16 // s/3066
+extract 1 8
+concat
+load 17 // v3064
+concat
+load 22 // v7054
+concat
+load 16 // s/3066
+extract 194 32
+concat
+byte base64(AA==)
+concat
+load 16 // s/3066
+extract 227 8
+concat
+load 16 // s/3066
+extract 235 8
+concat
+load 16 // s/3066
+extract 243 32
+concat
+load 16 // s/3066
+int 275
+int 32
+extract3
+concat
+global Round
+load 13 // v7079
+int 1000
+-
+store 14 // netBalance/3070
+store 15 // thisConsensusTime/3067
+store 16 // s/3066
+b _reachl_1
+l27_ifF:
+l28_LF_svsDump_3:
+load 21 // zeroAddress/3046
+load 20 // meta/3047
+concat
+load 19 // v3050
+itob
+concat
+load 18 // v3053
+concat
+load 17 // v3064
+concat
+load 16 // s/3066
+concat
+load 14 // netBalance/3070
+itob
+concat
+int 3
+global Round
+b updateStateNoOp
+l32_boxSet:
+pop
+swap
+box_put
+pop
+retsub
+l33_LF_makeTxnK_False_True:
+int 0
+itxn_field Fee
+int pay
+itxn_field TypeEnum
+itxn_field Receiver
+itxn_field Amount
+itxn_submit
+retsub
+l7_arc200_approve0_299:
+load 13 // .fork299.msg/3458
+extract 1 64
+store 11 // data_id/3461
+b _api_arc200_approve2
+l8_arc200_transfer0_299:
+load 13 // .fork299.msg/3458
+extract 1 64
+store 11 // data_id/3971
+b _api_arc200_transfer2
+l9_arc200_transferFrom0_299:
+load 13 // .fork299.msg/3458
+extract 1 96
+store 11 // data_id/4481
+b _api_arc200_transferFrom2
+manager__addresshNUic4X5WqHRxwpnTIS3TNgEBoLRnBvea_Gbmnd6daw_:
+b _reacha_manager
+register_byte_32y_l2IrPitJEU_sYtP1nUUk2_TZrnFiIwokwTSvnKkmg_:
+txna ApplicationArgs 1
+txna ApplicationArgs 2
+txna ApplicationArgs 3
+txna ApplicationArgs 4
+btoi
+txna ApplicationArgs 5
+btoi
+txna ApplicationArgs 6
+btoi
+store 11 // v18767
+store 12 // v18766
+store 13 // v18765
+store 14 // v18764
+store 15 // v18763
+store 16 // v18762
+b _reacha_register
+state___byte_32_Muzk1TLE9nyOSr1yrBVKSkuc2G2RmncSpUE4x3Ye0gQ_:
+b _reacha_state
+touch__uint64ytIshDgD9ndGTOfYtyr_WvjvIb_CCbYGUoyaPYwgrfI_:
+b _reacha_touch
+updateMbr_eq:
+pop
+retsub
+updateMbr_neg:
+swap
+-
+dup
+store 6 // GV_mbrAdd :: UInt
+global CreatorAddress
+callsub l25_LF_makeTxn_False_False_False_True
+retsub
+updateMbr_pos_eq:
+-
+dup
+bz updateMbr_eq
+dup
+store 6 // GV_mbrAdd :: UInt
+callsub l22_LF_checkTxn_False
+retsub
+withdraw_uint64_qHWHvMT6XCvk7umuZEnSud7ACHOqA1YvfnWbjlWyn_A_:
+txna ApplicationArgs 1
+btoi
+store 11 // v18782
+b _reacha_withdraw
+l3_LF_mapRef:
+box_get
+dup
+itob
+substring 7 8
+bury 4
+select
+concat
+retsub
+l4_LF_fromSome:
+dup
+extract 1 0
+swap
+int 0
+getbyte
+select
+retsub
+l6_LF_mapSet:
+swap
+dup
+box_len
+bnz l32_boxSet
+dig 3
+callsub l1_LF_mbrAdd
+b l32_boxSet
+l2_LF_svsLoad_3:
+dup
+extract 0 32
+store 21 // zeroAddress/3046
+dup
+extract 32 48
+store 20 // meta/3047
+dup
+int 80
+extract_uint64
+store 19 // v3050
+dup
+extract 88 32
+store 18 // v3053
+dup
+extract 120 153
+store 17 // v3064
+dup
+int 273
+int 307
+extract3
+store 16 // s/3066
+int 580
+extract_uint64
+store 14 // netBalance/3070
+retsub
+l20_LF_checkUInt256ResultLen:
+dup
+len
+int 32
+swap
+-
+bzero
+swap
+concat
+retsub
+l25_LF_makeTxn_False_False_False_True:
+itxn_begin
+b l33_LF_makeTxnK_False_True
+l22_LF_checkTxn_False:
+// resource: R_Txn
+txn GroupIndex
+load 0 // GV_txnCounter :: UInt
+int 1
++
+dup
+store 0 // GV_txnCounter :: UInt
+-
+dupn 2
+gtxns Receiver
+global CurrentApplicationAddress
+==
+assert
+gtxns TypeEnum
+int pay
+==
+assert
+gtxns Amount
+==
+assert
+retsub
+l21_LF_mapDel:
+box_del
+int 0
+cover 2
+select
+l31_LF_mbrSub:
+load 7 // GV_mbrSub :: UInt
++
+store 7 // GV_mbrSub :: UInt
+retsub
+l0_LF_wasntMeth:
+int 1
+store 3 // GV_wasntMeth :: Bool
+retsub
+l5_LF_timeCheck:
+dup
+int 0
+==
+swap
+load 2 // GV_currentTime :: UInt
+==
+||
+assert
+retsub
+l29_LF_updateMbr:
+load 6 // GV_mbrAdd :: UInt
+load 7 // GV_mbrSub :: UInt
+dup2
+>=
+bz updateMbr_neg
+b updateMbr_pos_eq
+l1_LF_mbrAdd:
+load 6 // GV_mbrAdd :: UInt
++
+store 6 // GV_mbrAdd :: UInt
+retsub
+l30_LF_makeTxn_False_True_False_True:
+itxn_begin
+itxn_field CloseRemainderTo
+b l33_LF_makeTxnK_False_True
