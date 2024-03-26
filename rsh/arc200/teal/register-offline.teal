@@ -1,0 +1,9 @@
+// register_offline
+registeroffline_6:
+itxn_begin
+int keyreg
+itxn_field TypeEnum
+int 0
+itxn_field Fee
+itxn_submit
+retsub

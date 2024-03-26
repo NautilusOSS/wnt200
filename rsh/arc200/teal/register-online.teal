@@ -1,0 +1,21 @@
+// register_online
+registeronline_5:
+itxn_begin
+int keyreg
+itxn_field TypeEnum
+load 21 // remap
+itxn_field SelectionPK
+load 22 // remap
+itxn_field VotePK
+load 20 // remap
+itxn_field StateProofPK
+load 19 // remap
+itxn_field VoteFirst
+load 13 // remap
+itxn_field VoteLast
+load 12 // remap
+itxn_field VoteKeyDilution
+int 1000 // TODO possibly piggy back on outer transaction fee payment
+itxn_field Fee
+itxn_submit
+retsub
