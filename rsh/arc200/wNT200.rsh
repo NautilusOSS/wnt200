@@ -1,18 +1,33 @@
 "reach 0.1";
 
-const MAX_DECIMALS = 256; // decimals fits in UInt8
+// INTERFACE SELECTORS
 
-const TokenMeta = Struct([
-  ["name", Bytes(32)], // name
-  ["symbol", Bytes(8)], // symbol
-  ["decimals", UInt], // number of decimals
-  ["totalSupply", UInt256], // total supply
-]);
+// INTERFACE_SELECTOR_ARC200 c7bea040
+// arc200_transfer(address,uint256)bool da7025b9
+// arc200_transferFrom(address,address,uint256)bool 4a968f8f
+// arc200_approve(address,uint256)bool b5422125
+// arc200_name()byte[32] 657d13ec
+// arc200_symbol()byte[8] b6ae1a25
+// arc200_decimals()uint8 84ec13d5
+// arc200_totalSupply()uint256 ec996041
+// arc200_balanceOf(address)uint256 82e573c4
+// arc200_allowance(address,address)uint256 bbb319f3
+// arc200_Transfer(address,address,uint256) 7983c35c
+// arc200_Approval(address,address,uint256) 1969f865
+const INTERFACE_SELECTOR_ARC200 = "0xc7bea040";
+
+export const supportsInterface = (interfaces) => (interfaceSelector) => {
+  return interfaces.includes(interfaceSelector);
+};
+
+const hasBoxOp = Data({
+  Balance: Address,
+  Allowance: Tuple(Address, Address),
+});
 
 const MintParams = Object({
-  name: Bytes(32), // name
-  symbol: Bytes(8), // symbol
-  decimals: UInt, // number of decimals
+  name: Bytes(32),
+  symbol: Bytes(8),
 });
 
 const KeyInfo = Struct([
@@ -30,19 +45,17 @@ export const NT200 = () =>
   Reach.App(() => {
     setOptions({ connectors: [ALGO] });
 
+    const supportedInterfaces = [Bytes.fromHex(INTERFACE_SELECTOR_ARC200)];
+
     const State = Struct([
-      ...Struct.fields(TokenMeta),
-      ["zeroAddress", Address],
-      ["manager", Address],
       ["tokenAmount", UInt],
       ["registered", Bool],
       ["keyInfo", MKeyInfo],
-      ["closed", Bool],
     ]);
 
     const Params = Object({
       zeroAddress: Address, // zero address
-      meta: MintParams, // token meta
+      meta: MintParams, // token meta params
     });
 
     const D = Participant("Deployer", {
@@ -54,16 +67,20 @@ export const NT200 = () =>
       arc200_transfer: Fun([Address, UInt256], Bool), // tranfer from this to address
       arc200_transferFrom: Fun([Address, Address, UInt256], Bool), // transfer from address to address
       arc200_approve: Fun([Address, UInt256], Bool), // approve address to spend this
+      // boxes
       createBalanceBox: Fun([Address], Bool), // create balance box
-      deleteBalanceBox: Fun([Address], Bool), // delete balance box if zero
-      deleteAllowanceBox: Fun([Address, Address], Bool), // delete allowance box if zero
+      createAllowanceBox: Fun([Address, Address], Bool), // create allowance box
+      // wrapped network token
       deposit: Fun([UInt], UInt256),
       withdraw: Fun([UInt], UInt256),
-      touch: Fun([], UInt), // touch this contract
+      // manager
       grant: Fun([Address], Null), // grant address to be manager
+      // participation
       register: Fun([Bytes(32), Bytes(32), Bytes(64), UInt, UInt, UInt], Bool),
       deregister: Fun([], Bool),
-      destroy: Fun([], Null), // destroy this contract
+      // anybody
+      touch: Fun([], UInt), // touch this contract
+      nop: Fun([], Null), // ()Null
     });
 
     const V = View({
@@ -73,11 +90,12 @@ export const NT200 = () =>
       arc200_totalSupply: Fun([], UInt256), // get total supply
       arc200_balanceOf: Fun([Address], UInt256), // get balance of address
       arc200_allowance: Fun([Address, Address], UInt256), // get allowance of address to spend this
-      hasBalance: Fun([Address], Bool), // has balance box
-      hasAllowance: Fun([Address, Address], Bool), // has allowance box
       circulatingSupply: Fun([], UInt256), // circulating supply
       state: Fun([], State), // get state
       manager: Fun([], Address), // get manager
+      hasBox: Fun([hasBoxOp], Bool),
+      // ARC73 Supported View
+      supportsInterface: Fun([Bytes(4)], Bool),
     });
 
     const N = Events({
@@ -98,18 +116,14 @@ export const NT200 = () =>
     D.only(() => {
       const { zeroAddress, meta } = declassify(interact.params);
     });
-    D.publish(zeroAddress, meta).check(() => {
-      check(
-        meta.decimals <= MAX_DECIMALS,
-        "ARC200: Decimals must be less than 19"
-      );
-    });
+    D.publish(zeroAddress, meta);
 
     const balances = new Map(UInt256);
     const allowances = new Map(Tuple(Address, Address), UInt256);
 
     const manager = D;
     const totalSupply = UInt256.max;
+    const decimals = 6;
 
     balances[getAddress()] = totalSupply;
     balances[zeroAddress] = UInt256(0);
@@ -119,18 +133,14 @@ export const NT200 = () =>
 
     V.arc200_name.set(() => meta.name);
     V.arc200_symbol.set(() => meta.symbol);
-    V.arc200_decimals.set(() => meta.decimals);
+    V.arc200_decimals.set(() => decimals);
     V.arc200_totalSupply.set(() => totalSupply);
 
     const initialState = {
-      ...meta,
-      totalSupply,
-      zeroAddress,
       manager,
       tokenAmount: 0,
       registered: false,
       keyInfo: MKeyInfo.None(),
-      closed: false,
     };
 
     const [s] = parallelReduce([initialState])
@@ -140,25 +150,29 @@ export const NT200 = () =>
           return fromSome(m_bal, UInt256(0));
         };
         V.arc200_balanceOf.set(balanceOf);
+        V.hasBox.set((op) => {
+          switch (op) {
+            case Balance:
+              return isSome(balances[op]);
+            case Allowance:
+              return isSome(allowances[op]);
+          }
+        });
         const allowance = (owner, spender) => {
           const m_bal = allowances[[owner, spender]];
           return fromSome(m_bal, UInt256(0));
         };
         V.arc200_allowance.set(allowance);
-        V.hasBalance.set((addr) => isSome(balances[addr]));
-        V.hasAllowance.set((owner, spender) =>
-          isSome(allowances[[owner, spender]])
-        );
         const state = () => State.fromObject(s);
         V.state.set(state);
         const circulatingSupply = () => UInt256(s.tokenAmount);
         V.circulatingSupply.set(circulatingSupply);
         const manager_ = () => s.manager;
         V.manager.set(manager_);
+        V.supportsInterface.set(supportsInterface(supportedInterfaces));
       })
-      .invariant(implies(!s.closed, balance() == s.tokenAmount))
-      .invariant(implies(s.closed, balance() == 0))
-      .while(!s.closed)
+      .invariant(balance() == s.tokenAmount)
+      .while(true)
       .define(() => {
         const transfer_ = (from_, to_, value_) => {
           assert(from_ != to_, "ARC200: Transfer to self");
@@ -186,7 +200,7 @@ export const NT200 = () =>
           );
         };
       })
-      // api: transfer
+      // api: transfer (arc200)
       // - transfer from this to address
       // + may transfer to zero address (burn) if zero address burn enabled
       .api_(A.arc200_transfer, (to_, value_) => {
@@ -212,7 +226,7 @@ export const NT200 = () =>
           );
         };
       })
-      // api: transferFrom
+      // api: transferFrom (arc200)
       // - transfer from address to address
       // + may not transfer to and from zero address
       // + requires allowance from spender to this
@@ -232,7 +246,7 @@ export const NT200 = () =>
           check(spender_ != zeroAddress, "ARC200: Approve to zero address");
         };
       })
-      // api: approve
+      // api: approve (arc200)
       // - approve address to spend this
       // + may not approve zero address
       // + may not approve this if zero address
@@ -246,13 +260,15 @@ export const NT200 = () =>
           },
         ];
       })
+      // api: deposit
+      // - deposit wrapped network token balance
       .api_(A.deposit, (value_) => {
         chkTransfer(getAddress(), this, UInt256(value_));
         return [
           value_,
           (k) => {
             transfer_(getAddress(), this, UInt256(value_));
-            k(balanceOf(this))
+            k(balanceOf(this));
             return [
               {
                 ...s,
@@ -266,12 +282,12 @@ export const NT200 = () =>
       // - withdraw wrapped network token balance
       .api_(A.withdraw, (value_) => {
         check(value_ <= s.tokenAmount, "ARC200: Withdraw amount too large");
-        chkTransferFrom(getAddress(), this, getAddress(), UInt256(value_));
+        chkTransfer(this, getAddress(), UInt256(value_));
         return [
           (k) => {
-            transferFrom(getAddress(), this, getAddress(), UInt256(value_));
-            transfer(value_).to(this);
-            k(balanceOf(this))
+            transfer_(this, getAddress(), UInt256(value_)); // transfer from sender to app (wrapped network token)
+            transfer(value_).to(this); // transfer from app to sender (network token)
+            k(balanceOf(this));
             return [
               {
                 ...s,
@@ -293,47 +309,23 @@ export const NT200 = () =>
           },
         ];
       })
-      // api: deleteBalanceBox
-      // - delete balance box if zero
-      // + requires address not zero address
-      // + requires balance box to exist
-      // + requires balance box to be zero or zero address balance box to be total supply
-      .api_(A.deleteBalanceBox, (addr) => {
+      // api: createAllowanceBox
+      // - create allowance box
+      .api_(A.createAllowanceBox, (owner, spender) => {
         check(
-          addr != zeroAddress,
-          "ARC200: Delete balance box to zero address"
+          isNone(allowances[[owner, spender]]),
+          "ARC200: Allowance box already exists"
         );
-        check(isSome(balances[addr]), "ARC200: Balance box not found");
-        check(balanceOf(addr) == UInt256(0), "ARC200: Balance box not empty");
         return [
           (k) => {
-            delete balances[addr];
+            allowances[[owner, spender]] = UInt256(0);
             k(true);
             return [s];
           },
         ];
       })
-      // api: deleteAllowanceBox
-      // - delete allowance box if zero
-      // + requires allowance box to exist
-      // + requires allowance box to be zero or zero address balance box to be total supply
-      .api_(A.deleteAllowanceBox, (owner, spender) => {
-        check(
-          isSome(allowances[[owner, spender]]),
-          "ARC200: Allowance box not found"
-        );
-        check(
-          allowance(owner, spender) == UInt256(0),
-          "ARC200: Allowance box not empty"
-        );
-        return [
-          (k) => {
-            delete allowances[[owner, spender]];
-            k(true);
-            return [s];
-          },
-        ];
-      })
+      // api: register
+      // - register for voting
       .api_(A.register, (votekey, selkey, spkey, votefst, votelst, votekd) => {
         check(this === s.manager, "ARC200: Only manager can grant");
         return [
@@ -361,6 +353,8 @@ export const NT200 = () =>
           },
         ];
       })
+      // api: deregister
+      // - deregister from voting
       .api_(A.deregister, () => {
         check(this === s.manager, "ARC200: Only manager can grant");
         check(s.registered, "Must be registered");
@@ -392,7 +386,17 @@ export const NT200 = () =>
             const f1 = getUntrackedFunds();
             transfer(f1).to(s.manager);
             k(f1);
-            return [s]
+            return [s];
+          },
+        ];
+      })
+      // api: nop
+      // - no operation
+      .api_(A.nop, () => {
+        return [
+          (k) => {
+            k(null);
+            return [s];
           },
         ];
       })
@@ -401,33 +405,12 @@ export const NT200 = () =>
       // + may not grant zero address
       .api_(A.grant, (addr) => {
         check(addr != zeroAddress, "ARC200: Grant zero address");
-        check(addr != s.manager, "ARC200: Grant to manager")
+        check(addr != s.manager, "ARC200: Grant to manager");
         check(this === s.manager, "ARC200: Only manager can grant");
         return [
           (k) => {
             k(null);
             return [{ ...s, manager: addr }];
-          },
-        ];
-      })
-      // api: destroy
-      // - destroy this contract
-      // + requires zero address balance box to be total supply
-      // + deletes last balance box, zero address balance box
-      // + exits loop and closes contract
-      .api_(A.destroy, () => {
-        check(this === s.manager, "ARC200: Only manager can grant");
-        check(
-          isSome(balances[zeroAddress]),
-          "ARC200: Zero address balance box not found"
-        );
-        return [
-          (k) => {
-            delete balances[zeroAddress];
-            delete balances[getAddress()]; 
-            transfer(s.tokenAmount).to(s.manager);
-            k(null);
-            return [{ ...s, closed: true }];
           },
         ];
       });

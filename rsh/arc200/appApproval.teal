@@ -1,4 +1,4 @@
-#pragma version 8
+#pragma version 9
 // resource: R_Txn
 txn ApplicationID
 bz alloc
@@ -23,7 +23,7 @@ byte base64(Aw==)
 app_global_get
 concat
 preamble:
-pushbytess base64(AiMmfA==) base64(HFN4rQ==) base64(LX18Kg==) base64(PCpXoQ==) base64(UC5TRA==) base64(Uh4tYQ==) base64(U1nExQ==) base64(WHWfog==) base64(ZDbc4A==) base64(ZSJR0Q==) base64(ZX0T7A==) base64(ZdjoCQ==) base64(Z0NAMQ==) base64(aM+Yzg==) base64(efWwjQ==) base64(gt0cug==) base64(guVzxA==) base64(o1nkdQ==) base64(tq4aJQ==) base64(u7MZ8w==) base64(0KHMFQ==) base64(12EBUg==) base64(7JlgQQ==) base64(82tNvw==) base64(+261cw==)
+pushbytess base64(AiMmfA==) base64(tUIhJQ==) base64(LX18Kg==) base64(PCpXoQ==) base64(UC5TRA==) base64(Uh4tYQ==) base64(U1nExQ==) base64(WHWfog==) base64(hOwT1Q==) base64(ZSJR0Q==) base64(ZX0T7A==) base64(ZdjoCQ==) base64(Z0NAMQ==) base64(aM+Yzg==) base64(efWwjQ==) base64(gt0cug==) base64(guVzxA==) base64(o1nkdQ==) base64(tq4aJQ==) base64(u7MZ8w==) base64(SpaPjw==) base64(12EBUg==) base64(7JlgQQ==) base64(2nAluQ==) base64(+261cw==)
 txna ApplicationArgs 0
 match deposit_uint64_ukUHBBSU8NflmqV48ePRDeliVnRzfYeahGSa54Q8eDFY_ arc200_approve_aB7vxbW4PSDQsylrpf8z0pJ5DG0KY_ArfOZuMRX9a63o_ createAllowanceBnVdPdny7x2wWe2aifDaaIh7_y1n4fj_cjjYJeDfEkOk_ _reachp_2 _reachp_0 supportsInterfac_blIJMxxpZoFW0kYet05ih6kJ8AxwWfFqb_RXVfbNHw_ hasBox__byte_bytMsf4xzxj5kyULYB6GEX3TQ_tTiyGJkl0YbtlZ_3neR8_ nop__voidfr9sv1vSVrbsxoMM7HtTE48BHB3Op6HTfAZ_Wpdzx4g_ arc200_decimals_0i3zaAdWGk8HTrh900e3z__BopVJHiDErU4VQKq4WR4_ state___uint64_bFR9_y3LtFtuU8vvZencUJVMAqKoWXh9CQB823hcFx60_ arc200_name__bytiUdKDeBB_7Wod3lAotr0fjTghvzrL3y_c3feTU4zUwo_ deregister__byteqHgy_gqmrtc17aeA2T0sHueTcvRaDPFOgRhkKXpl2f0_ manager__addresshNUic4X5WqHRxwpnTIS3TNgEBoLRnBvea_Gbmnd6daw_ withdraw_uint64_qHWHvMT6XCvk7umuZEnSud7ACHOqA1YvfnWbjlWyn_A_ grant_address_voB0P2GtSPgk8keWQFFrigNPpqwOzZufpkaNLj5BW3NLk_ circulatingSuppli6X5aS7VIKzCjZOyZz0DShGSYzZzFbCnKJc6ZUYOQv8_ arc200_balanceOfAuLlni3r2JwN05I0cJndHjbQh_B7u8HtXeT2u87KRQA_ createBalanceBoxchSbxpUd21iIKxD2bWZUfsnE9y0OLFr_OoRnQeAq03c_ arc200_symbol__bRs3rJdpYyd5U9jg4y_u6hZgTc3UoO_SmNhgJJ2m0lrY_ arc200_allowanceAcq4c8hE24gt_EoooVBPqZqn0ii698pjkLnoeezacoY_ arc200_transferF8dq513jzwlGNyuNOIzPPYDtVSgiLxnp3MTKwA15nTo4_ register_byte_32y_l2IrPitJEU_sYtP1nUUk2_TZrnFiIwokwTSvnKkmg_ arc200_totalSupp2vgBT0Wqe9Jv1e5PQOIiaRDt7ILIY6S8h4wVn48Sh2s_ arc200_transfer_mW6YBiBj2tVEDo94HJlsKqWJTJtaEhfhx1b4rELoCvQ_ touch__uint64ytIshDgD9ndGTOfYtyr_WvjvIb_CCbYGUoyaPYwgrfI_
 errl:
@@ -81,6 +81,8 @@ substring 7 8
 concat
 log // up to 9 bytes
 load 11 // v2878
+pushint 7 // mod: push the number 7 onto the stack
+shl // mod: shift the value at the top of the stack 7 bits to the left
 itob
 substring 7 8
 store 4 // GV_apiRet :: Null
@@ -191,6 +193,8 @@ substring 7 8
 concat
 log // up to 9 bytes
 load 11 // v3313
+pushint 7 // mod: push the number 7 onto the stack
+shl // mod: shift the value at the top of the stack 7 bits to the left
 itob
 substring 7 8
 store 4 // GV_apiRet :: Null
@@ -359,6 +363,8 @@ substring 7 8
 concat
 log // up to 9 bytes
 load 11 // v3779
+pushint 7 // mod: push the number 7 onto the stack
+shl // mod: shift the value at the top of the stack 7 bits to the left
 itob
 substring 7 8
 store 4 // GV_apiRet :: Null
@@ -405,6 +411,8 @@ substring 7 8
 concat
 log // up to 9 bytes
 load 11 // v4213
+pushint 7 // mod: push the number 7 onto the stack
+shl // mod: shift the value at the top of the stack 7 bits to the left
 itob
 substring 7 8
 store 4 // GV_apiRet :: Null
@@ -446,6 +454,8 @@ substring 7 8
 concat
 log // up to 9 bytes
 load 11 // v4642
+pushint 7 // mod: push the number 7 onto the stack
+shl // mod: shift the value at the top of the stack 7 bits to the left
 itob
 substring 7 8
 store 4 // GV_apiRet :: Null
@@ -610,6 +620,7 @@ int 1000
 store 13 // v5341
 int 1000
 callsub l23_LF_checkTxn_False
+callsub registeroffline_6
 // ^ CheckPay
 // at ./wNT200.rsh:146:31:dot
 load 11 // m/5321
@@ -730,6 +741,8 @@ substring 7 8
 concat
 log // up to 9 bytes
 load 11 // v6855
+pushint 7 // mod: push the number 7 onto the stack
+shl // mod: shift the value at the top of the stack 7 bits to the left
 itob
 substring 7 8
 store 4 // GV_apiRet :: Null
@@ -789,6 +802,7 @@ log // up to 12 bytes
 int 1000
 txn Sender
 callsub l26_LF_makeTxn_False_False_False_True
+callsub registeronline_5
 byte base64(AQ==)
 load 11 // v6867
 concat
@@ -1063,6 +1077,7 @@ assert
 // at ./wNT200.rsh:89:22:property binding
 callsub l2_LF_svsLoad_3
 byte base64(AAAAAAAAAAY=)
+substring 7 8 // mod uint8
 store 4 // GV_apiRet :: Null
 b apiReturn_check
 _reacha_arc200_name:
@@ -1520,6 +1535,8 @@ substring 7 8
 concat
 log // up to 9 bytes
 load 11 // v5530
+pushint 7 // mod: push the number 7 onto the stack
+shl // mod: shift the value at the top of the stack 7 bits to the left
 itob
 substring 7 8
 store 4 // GV_apiRet :: Null
@@ -1541,6 +1558,8 @@ substring 7 8
 concat
 log // up to 9 bytes
 load 11 // v5540
+pushint 7 // mod: push the number 7 onto the stack
+shl // mod: shift the value at the top of the stack 7 bits to the left
 itob
 substring 7 8
 store 4 // GV_apiRet :: Null
@@ -1765,7 +1784,7 @@ int pay
 ==
 assert
 gtxns Amount
-==
+<=
 assert
 retsub
 l0_LF_wasntMeth:
@@ -1793,6 +1812,36 @@ l1_LF_mbrAdd:
 load 6 // GV_mbrAdd :: UInt
 +
 store 6 // GV_mbrAdd :: UInt
+retsub
+// register_offline
+registeroffline_6:
+itxn_begin
+int keyreg
+itxn_field TypeEnum
+int 0
+itxn_field Fee
+itxn_submit
+retsub
+// register_online
+registeronline_5:
+itxn_begin
+int keyreg
+itxn_field TypeEnum
+load 23 // remap
+itxn_field SelectionPK
+load 24 // remap
+itxn_field VotePK
+load 22 // remap
+itxn_field StateProofPK
+load 21 // remap
+itxn_field VoteFirst
+load 13 // remap
+itxn_field VoteLast
+load 12 // remap
+itxn_field VoteKeyDilution
+int 1000 // TODO possibly piggy back on outer transaction fee payment
+itxn_field Fee
+itxn_submit
 retsub
 l30_LF_makeTxn_False_True_False_True:
 itxn_begin
